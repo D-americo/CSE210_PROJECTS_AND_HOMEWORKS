@@ -7,15 +7,22 @@ public class Reference
     private string _book;
     private int _chapter;
     private int _verse;
+    private int _endVerse;
 
-    public Reference(string book, int chapter, int verse)// porque dentro do () eu não preciso escrever _book ou os outros com o _ também
+    public Reference(string book, int chapter, int verse, int endVerse)// porque dentro do () eu não preciso escrever _book ou os outros com o _ também
     {
         _book = book;
         _chapter = chapter;
         _verse = verse;
+        _endVerse = endVerse;
     }    
     public string GetDisplayText()
     {
-        return $"{_book}, {_chapter}, {_verse}";
+        if (_verse == _endVerse)
+            return$"{_book}, {_chapter}, {_verse}";
+        else
+        {
+            return $"{_book}, {_chapter}:{_verse}-{_endVerse}";
+        }
     }
 }

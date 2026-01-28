@@ -15,7 +15,7 @@ public class Word
     {
         if (_isHidden) // Se _isHidden == true → mostra "____"
         {
-            return"____";
+            return"_";
         }
         else
         {

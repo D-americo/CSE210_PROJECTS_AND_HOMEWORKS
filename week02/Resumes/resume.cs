@@ -1,17 +1,17 @@
 using System;
+using System.Collections.Generic; // precisamos usar isso pois se não o c# não entende o List<Job>
 
 public class Resume
 {
-    public string _name; // porque aqui teve que usar public string _name
-    public List<Job> _jobs = new List<Job>(); // porque aqui foi usado List<Job> _jobs = new List<Job>();
+    public string _name; // isso serve para o curriculo saber de quem é o curriculo
+    public List<Job> _jobs = new List<Job>();
 
-
-    public void Display() // essa aqui é a main function?
+    public void Display()
     {
-        Console.WriteLine($"Name: {_name}"); // ele vai escrever o nome da pessoa que ela vai colocar onde?
+        Console.WriteLine($"Name: {_name}");
         Console.WriteLine("Jobs:");
 
-        foreach (Job job in _jobs) // porque foi usado um for each no job job in jobs, 
+        foreach (Job job in _jobs)
         {
             job.Display();
         }

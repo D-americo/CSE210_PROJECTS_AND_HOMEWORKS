@@ -54,7 +54,7 @@ public Scripture(Reference reference, string text)
     
     }
 
-    public bool IsCompletlyHidden()
+    public bool IsCompletelyHidden()
     {
         foreach (Word word in _words)
         {

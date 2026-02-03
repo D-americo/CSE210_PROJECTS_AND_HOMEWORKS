@@ -15,11 +15,11 @@ public class Word
     {
         if (_isHidden) // Se _isHidden == true → mostra "____"
         {
-            return"_";
+            return new string('_', _text.Length);
         }
         else
         {
-            return _text; //Se _isHidden == False → mostra text
+            return _text; //Se s _isHidden == False → mostra text
         }
     }
 

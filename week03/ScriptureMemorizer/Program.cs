@@ -22,7 +22,7 @@ class Program
                 break;
             }
 
-            scripture.HideRamdomWords(3); // o que é isso HideRamdomWords, “Peça para a escritura esconder 3 palavras aleatórias.”
+            scripture.HideRandomWords(3); // o que é isso HideRamdomWords, “Peça para a escritura esconder 3 palavras aleatórias.”
         }
 
     

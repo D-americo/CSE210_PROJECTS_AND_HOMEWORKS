@@ -1,26 +1,22 @@
 using System;
-using System.Collections.Generic; // Por que System.Collections.Generic, Por que System.Collections.Generic, Porque vamos usar: List<Word>
-
-
-
+using System.Collections.Generic;
 
 public class Scripture
 {
-private Reference _reference; // O que cada um faz?  _reference Guarda livro + capítulo + versículo
+    private Reference _reference;          // Guarda livro + capítulo + versículo(s)
+    private List<Word> _words;             // Lista de objetos Word
+    private Random _random = new Random(); // Random criado uma vez só
 
-private List<Word> _words; // _words, Lista de objetos Word, Cada palavra da escritura vira um Word
- 
-public Scripture(Reference reference, string text)
+    public Scripture(Reference reference, string text)
     {
-        _reference = reference; // Guarda a referência recebida.
-        _words = new List<Word>(); // Cria a lista que vai guardar as palavras.
+        _reference = reference;
+        _words = new List<Word>();
 
-        string[] parts = text.Split(" "); // Divide o texto em palavras usando o espaço.
-
+        string[] parts = text.Split(" "); // Divide o texto em palavras
         foreach (string part in parts)
         {
-            Word word = new Word(part); // Cria um objeto Word com aquela palavra.
-            _words.Add(word);// _words.Add(word);
+            Word word = new Word(part);
+            _words.Add(word);
         }
     }
 
@@ -36,22 +32,35 @@ public Scripture(Reference reference, string text)
         return result;
     }
 
-    public void HideRamdomWords(int numberToHide)
+    public void HideRandomWords(int numberToHide)
     {
-        Random random = new Random(); // porque tem que repetir o nome, Ramdom ai reandon? porque alguns usam <> e outros como esse só escrever new Ramdom()
-        int hidden = 0;
-
-        while(hidden < numberToHide)
+        // Conta quantas palavras ainda estão visíveis
+        int visibleCount = 0;
+        foreach (Word word in _words)
         {
-            int index = random.Next(_words.Count); // porque index, e aqui está usando o .Next e o .Count para fazer o que?
+            if (!word.IsHidden())
+            {
+                visibleCount++;
+            }
+        }
+
+        // Se pedir para esconder mais do que resta, ajusta
+        if (numberToHide > visibleCount)
+        {
+            numberToHide = visibleCount;
+        }
+
+        int hidden = 0;
+        while (hidden < numberToHide)
+        {
+            int index = _random.Next(_words.Count);
 
             if (!_words[index].IsHidden())
             {
                 _words[index].Hide();
-                hidden++; // para o que serve esse ++ aqui 
+                hidden++;
             }
         }
-    
     }
 
     public bool IsCompletelyHidden()
@@ -60,10 +69,9 @@ public Scripture(Reference reference, string text)
         {
             if (!word.IsHidden())
             {
-                return false;
+                return false; // ainda existe palavra visível
             }
         }
-
-        return true;
+        return true; // todas escondidas
     }
 }

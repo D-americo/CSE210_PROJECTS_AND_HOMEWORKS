@@ -6,7 +6,7 @@ class Program
     static void Main(string[] args)
     {
         List<Shape> shapes = new List<Shape>();
-
+        // simplificado  List<Shape> shapes = [new Square("Red", 5), new Rectangle("Blue", 4, 6), new Circle("Green", 3)];
         shapes.Add(new Square("Red", 5));
         shapes.Add(new Rectangle("Blue", 4, 6));
         shapes.Add(new Circle("Green", 3));
